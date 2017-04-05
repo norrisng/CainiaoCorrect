@@ -10,7 +10,7 @@ This program was designed to retrieve Cainiao shipment requests, but most likely
 
 ## Installation ##
 
-No installation is requred, but CainiaoCorrect does require TinyCsvParser, which is available off [NuGet](https://www.nuget.org/packages/TinyCsvParser/). Simply place the DLL in the same directory as the executable.
+No installation is requred. Simply download the latest release under "releases" at the top of the GitHub project page, then extract the *.zip to any location.
 
 The following text files are required for getDataDigest endpoint functionality. This hasn't been implemented yet; however:
  * `api/dataDigestEndpoint.txt`
