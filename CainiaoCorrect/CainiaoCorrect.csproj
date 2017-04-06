@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvParser\CsvMerger.cs" />
+    <Compile Include="CsvParser\CsvReportParser.cs" />
     <Compile Include="CsvParser\CsvShipmentMapping.cs" />
     <Compile Include="ApiRequest\DataDigest.cs" />
     <Compile Include="CainiaoCorrect.cs" />
