@@ -64,12 +64,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvParser\CsvCorrectionDefinitionMapping.cs" />
     <Compile Include="CsvParser\CsvMerger.cs" />
     <Compile Include="CsvParser\CsvShipmentMapping.cs" />
     <Compile Include="ApiRequest\DataDigest.cs" />
     <Compile Include="CainiaoCorrect.cs" />
-    <Compile Include="ErrorCorrect\CorrectionDefinition.cs" />
+    <Compile Include="ErrorCorrect\CorrectionRuleset.cs" />
+    <Compile Include="ErrorCorrect\CorrectionRulesetMapping.cs" />
+    <Compile Include="ErrorCorrect\CorrectionRulesetParser.cs" />
     <Compile Include="ErrorCorrect\ErrorCorrection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipment.cs" />
