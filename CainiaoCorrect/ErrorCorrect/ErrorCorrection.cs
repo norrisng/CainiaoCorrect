@@ -50,6 +50,9 @@ namespace CainiaoCorrect.ErrorCorrect
 		{
 			correctUnitPrice();
 			correctGoodsName();
+
+			List<CorrectionRuleset> correctionRules = new List<CorrectionRuleset>();
+
 			return xmlString;
 		}
 
@@ -92,6 +95,11 @@ namespace CainiaoCorrect.ErrorCorrect
 			result = r2.Replace(xmlString, replacement);
 
 			xmlString = result;
+
+		}
+
+		private void parseRules()
+		{
 
 		}
 

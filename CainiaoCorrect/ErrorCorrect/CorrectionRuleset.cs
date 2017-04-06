@@ -9,11 +9,12 @@ namespace CainiaoCorrect.ErrorCorrect
 	/// <summary>
 	/// Defines an error correction rule.
 	/// </summary>
-	public class CorrectionDefinition
+	public class CorrectionRuleset
 	{
 
 		/// <summary>
-		/// The XML element that needs to be corrected.
+		/// The XML element that needs to be corrected. 
+		/// Do not include angled brackets or slashes.
 		/// </summary>
 		public string xmlElement
 		{
