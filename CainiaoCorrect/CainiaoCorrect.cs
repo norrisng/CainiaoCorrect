@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using TinyCsvParser;
 using System.Windows.Forms;
 using CainiaoCorrect.ErrorCorrect;
 using CainiaoCorrect.CsvParser;
@@ -17,6 +16,13 @@ namespace CainiaoCorrect
 		[STAThread]
 		static void Main(string[] args)
 		{
+			if (!File.Exists("cainiao_Orderpush.csv"))
+			{
+				Console.WriteLine(	"\nERROR: \"cainiao_Orderpush.csv\" not found. \n" + 
+									"          Please place CSV file(s) in the same directory \n" + 
+									"          as CainiaoCorrect.exe before restarting.");
+			}
+
 			Console.Write("\nReading files...");
 			
 			// combine both csv files into a single file
@@ -62,6 +68,7 @@ namespace CainiaoCorrect
 				ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
 				digestXml = autoCorrect.correct();
 
+				// copy XML (if found) to clipboard
 				if (digestXml != "")
 				{
 					Clipboard.SetText(digestXml);

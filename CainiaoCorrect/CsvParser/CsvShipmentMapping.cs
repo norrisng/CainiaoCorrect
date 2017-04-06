@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TinyCsvParser;
+using TinyCsvParser.Mapping;
 
 namespace CainiaoCorrect
 {
 	/// <summary>
 	/// Defines the mapping between the Shipment Report CSV and the Shipment class.
 	/// </summary>
-	public class CsvShipmentMapping : TinyCsvParser.Mapping.CsvMapping<Shipment>
+	public class CsvShipmentMapping : CsvMapping<Shipment>
 	{
 		public CsvShipmentMapping()
 			: base()

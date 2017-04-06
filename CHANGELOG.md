@@ -1,5 +1,12 @@
 # Changelog #
 
+## 1.2.1 ##
+
+Released **2017-04-06**
+
+ * **Feature:** Program now warns user if `cainiao_Orderpush.csv` doesn't exist
+ * **Bugfix:** Duplicate shipment IDs are now only processed once 
+
 ## 1.2.0 ##
 
 Released **2017-04-05** (initial GitHub commit)
