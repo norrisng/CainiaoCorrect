@@ -24,7 +24,7 @@ namespace CainiaoCorrect.ErrorCorrect
 		/// <summary>
 		/// Helper method for actual CSV parsing
 		/// </summary>
-		/// <param name="filename"></param>
+		/// <param name="filename">CSV file to parse (inclue *.csv).</param>
 		private void parse(string filename)
 		{
 			CsvParserOptions csvParserOptions = new CsvParserOptions(true, new[] { ',' });
@@ -45,7 +45,7 @@ namespace CainiaoCorrect.ErrorCorrect
 		/// Retrieves the parsed rulesets.
 		/// </summary>
 		/// <returns>Rulesets</returns>
-		public List<CorrectionRuleset> getRuleset()
+		public List<CorrectionRuleset> getResults()
 		{
 			return rulesets;
 		}

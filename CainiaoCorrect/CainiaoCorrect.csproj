@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvFileParser.cs" />
     <Compile Include="CsvParser\CsvMerger.cs" />
     <Compile Include="CsvParser\CsvReportParser.cs" />
     <Compile Include="CsvParser\CsvShipmentMapping.cs" />

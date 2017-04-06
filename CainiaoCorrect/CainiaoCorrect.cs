@@ -8,6 +8,7 @@ using System.IO;
 using TinyCsvParser;
 using System.Windows.Forms;
 using CainiaoCorrect.ErrorCorrect;
+using CainiaoCorrect.CsvParser;
 
 namespace CainiaoCorrect
 {
@@ -22,18 +23,16 @@ namespace CainiaoCorrect
 			CsvMerger cm = new CsvMerger();
 			cm.merge("cainiao_Orderpush");
 
-			// TODO: move parsing into helper class (but can't return var, so will have to figure this out)
-			//		 (also, exception handling for non-compliant CSV files)
-			CsvParserOptions csvParserOptions = new CsvParserOptions(true, new[] { ',' });
-			CsvShipmentMapping csvMapper = new CsvShipmentMapping();
-			CsvParser<Shipment> csvParser = new CsvParser<Shipment>(csvParserOptions, csvMapper);
+			// parse CSV file
+			CsvReportParser cp = new CsvReportParser("cainiao_Orderpush_combined.csv");
+			List<Shipment> shipments = cp.getResults();
 
-			var result = csvParser.ReadFromFile(@"cainiao_Orderpush_combined.csv", Encoding.UTF8).ToList();
-			
-			Console.Write(result.Count + " items in list.\n\n");
+			Console.Write(shipments.Count + " items in list.\n\n");
 
-			string shipment_id = "irrelevant string to prevent program from quitting on initial run";
-			while (shipment_id != "")
+			// continue to ask the user for a shipment_id until
+			// the user provides nothing for input
+			string shipment_id = "";
+			do
 			{
 				Console.Write("Enter shipment ID. Leave empty to quit: ");
 				shipment_id = Console.ReadLine();
@@ -41,27 +40,27 @@ namespace CainiaoCorrect
 				string digestXml = "";
 				bool isFound = false;
 
-				// search through parsed results
-				for (int i = 0; i < result.Count && !isFound; i++)
-				{
-				
-					// get XML from CSV
-					if (result[i].Result.shipmentId == shipment_id)
+				// retrieve digestXml for the requested shipment_id
+				for (int i = 0; i < shipments.Count && !isFound; i++) {
+
+					if (shipments[i].shipmentId == shipment_id)
 					{
 						isFound = true;
-						digestXml = digestXml + result[i].Result.requestFileContent;
-
-						// remove header
-						// (the "%" is just a random character to identify the end of the header)
-						digestXml = digestXml.Replace("logisticsInteface - ", "%");
-						digestXml = digestXml.Substring(digestXml.IndexOf("%") + 1);
-
-						// AutoCorrect (beta)
-						Console.WriteLine("  Auto-correction in progress...");
-						ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
-						digestXml = autoCorrect.correct();
+						digestXml += shipments[i].requestFileContent;
 					}
+
 				}
+
+				// remove header
+				//    (the "%" is just a random, temporary character to 
+				//    identify the end of the header)
+				digestXml = digestXml.Replace("logisticsInteface - ", "%");
+				digestXml = digestXml.Substring(digestXml.IndexOf("%") + 1);
+
+				// AutoCorrect
+				Console.WriteLine("  Auto-correction in progress...");
+				ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
+				digestXml = autoCorrect.correct();
 
 				if (digestXml != "")
 				{
@@ -91,6 +90,7 @@ namespace CainiaoCorrect
 				}
 
 			}
+			while (shipment_id != "");
 
 			Console.WriteLine("\nPress any key to close program.");
 			Console.ReadKey();
