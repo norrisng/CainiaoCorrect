@@ -16,8 +16,9 @@ namespace CainiaoCorrect.CsvParser
 		public CsvCorrectionDefinitionMapping()
 			: base()
 		{
-			MapProperty(0, x => x.errorRegex);
-			MapProperty(1, x => x.correctString);
+			MapProperty(0, x => x.xmlElement);
+			MapProperty(1, x => x.original);
+			MapProperty(2, x => x.replacement);
 		}
 	}
 }
