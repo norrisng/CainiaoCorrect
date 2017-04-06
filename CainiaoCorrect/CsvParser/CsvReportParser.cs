@@ -22,16 +22,19 @@ namespace CainiaoCorrect.CsvParser
 			CsvShipmentMapping csvMapper = new CsvShipmentMapping();
 			CsvParser<Shipment> csvParser = new CsvParser<Shipment>(csvParserOptions, csvMapper);
 
-			var results = csvParser.ReadFromFile(@filename, Encoding.UTF8).ToList();
+			var rawResults = csvParser.ReadFromFile(@filename, Encoding.UTF8).ToList();
+
+			// initialize shipments, since it's never been initialized
+			shipments = new List<Shipment>();
 
 			// manually convert from var
-			for (int i = 0; i < shipments.Count; i++)
+			for (int i = 0; i < rawResults.Count; i++)
 			{
-				shipments.Add(results[i].Result);
+				shipments.Add(rawResults[i].Result);
 			}
 		}
 
-		public List<Shipment> getShipments()
+		public List<Shipment> getResults()
 		{
 			return shipments;
 		}
