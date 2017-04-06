@@ -39,14 +39,16 @@ namespace CainiaoCorrect
 				shipment_id = Console.ReadLine();
 
 				string digestXml = "";
+				bool isFound = false;
 
 				// search through parsed results
-				for (int i = 0; i < result.Count; i++)
+				for (int i = 0; i < result.Count && !isFound; i++)
 				{
 				
 					// get XML from CSV
 					if (result[i].Result.shipmentId == shipment_id)
 					{
+						isFound = true;
 						digestXml = digestXml + result[i].Result.requestFileContent;
 
 						// remove header
