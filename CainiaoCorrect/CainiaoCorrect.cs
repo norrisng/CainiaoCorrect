@@ -35,6 +35,9 @@ namespace CainiaoCorrect
 
 			Console.Write(shipments.Count + " items in list.\n\n");
 
+			// Maintain a list of all corrected shipments to check the very end
+			List<string> correctedShipments = new List<string>();
+
 			// continue to ask the user for a shipment_id until
 			// the user provides nothing for input
 			string shipment_id = "";
@@ -53,6 +56,9 @@ namespace CainiaoCorrect
 					{
 						isFound = true;
 						digestXml += shipments[i].requestFileContent;
+
+						// Keep track of corrected shipments
+						correctedShipments.Add(shipment_id);
 					}
 
 				}
@@ -64,7 +70,9 @@ namespace CainiaoCorrect
 				digestXml = digestXml.Substring(digestXml.IndexOf("%") + 1);
 
 				// AutoCorrect
-				Console.WriteLine("  Auto-correction in progress...");
+				// Quick and dirty fix: suppress this WriteLine if nothing was entered
+				if (shipment_id != "")
+					Console.WriteLine("  Auto-correction in progress...");
 				ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
 				digestXml = autoCorrect.correct();
 
@@ -98,6 +106,25 @@ namespace CainiaoCorrect
 
 			}
 			while (shipment_id != "");
+
+			Console.WriteLine("\nVerifying previously entered shipment IDs.\n" +
+								"This may take a while...");
+
+			bool allShipmentsSuccessful = true;
+
+			foreach(string id in correctedShipments)
+			{
+				SubmitVerify sv = new SubmitVerify(id);
+				if (!sv.isSubmitted() && id != "")
+				{
+					Console.WriteLine("  Warning: Shipment " + id + " was not submitted.");
+					allShipmentsSuccessful = false;
+				}
+			}
+
+			if (allShipmentsSuccessful)
+				Console.WriteLine("  All previously entered shipment IDs that were auto-corrected \n" + 
+									"  were successfully submitted.");
 
 			Console.WriteLine("\nPress any key to close program.");
 			Console.ReadKey();

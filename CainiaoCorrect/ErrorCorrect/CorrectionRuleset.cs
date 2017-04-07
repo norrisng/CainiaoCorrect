@@ -36,5 +36,11 @@ namespace CainiaoCorrect.ErrorCorrect
 		{
 			get; set;
 		}
+
+		public string buildOriginalString()
+		{
+			// TODO
+			return null;
+		}
 	}
 }
