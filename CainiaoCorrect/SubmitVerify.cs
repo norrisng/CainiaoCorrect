@@ -7,12 +7,18 @@ using System.Net;
 
 namespace CainiaoCorrect
 {
-
+	/// <summary>
+	/// Checks if a shipment has been submitted.
+	/// </summary>
 	class SubmitVerify
 	{
 		private string shipmentId;
 		private bool submitted = false;
 
+		/// <summary>
+		/// Initializes a new instance of SubmitVerify
+		/// </summary>
+		/// <param name="shipmentId">Shipment ID to check</param>
 		public SubmitVerify(string shipmentId)
 		{
 			this.shipmentId = shipmentId;
@@ -37,7 +43,7 @@ namespace CainiaoCorrect
 
 			// Raw HTML that indicates the shipment is submitted
 
-			// This is the raw HTMl when the shipment has just been submitted
+			// This is the raw HTML when the shipment has just been submitted (old implementation)
 			//string submittedHtml = "<label id=\"shipitemForm: Status\" " + 
 			//						"class=\"ui - outputlabel ui - widget TrackStatus\" " + 
 			//						"style=\"color: #339900\">SUBMITTED</label>";

@@ -2,6 +2,8 @@
 
 CainiaoCorrect is a simple program that can retrieve the RequestFileContent for a particular shipment ID from multiple DHL eCommerce AP Portal Order/Tracking reports. It even removes the HTTP header and performs basic error correction, allowing for immediate copy-and-pasting elsewhere for further editing.
 
+It also checks if all shipment IDs that were successfully retrieved were submitted to DHLeC. This can be useful as a "final check". 
+
 As of this current version, basic error correction includes the following:
  * Correcting `<declarePrice>` and corresponding `<quantity>` so that it is at least `100` cents per `1` good
  * Correcting `<name>` and `<categoryName>` from `IC` to `Integrated Circuit`
@@ -28,7 +30,7 @@ The following text files are required for getDataDigest endpoint functionality. 
 
 5. Repeat steps (3) and (4) to look up another shipment ID. This can be repeated as many times as desired.
 
-6. To quit, leave the input empty, then press Enter. Alternatively, the window can simply be closed to quit.
+6. To quit, leave the input empty, then press Enter. The program will now check and see if previously-retrieved shipments were successfully submitted.
 
 
 ## Third-party libraries ##

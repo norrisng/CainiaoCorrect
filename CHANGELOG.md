@@ -1,5 +1,12 @@
 # Changelog #
 
+## 1.3.0 ##
+
+Released **2017-04-07**
+
+* **Feature:** Successfully retrieved Shipment IDs are now checked online to see if they were submitted
+* **Bugfix:** XML is no longer retrieved if shipment ID doesn't exist
+
 ## 1.2.1 ##
 
 Released **2017-04-06**
