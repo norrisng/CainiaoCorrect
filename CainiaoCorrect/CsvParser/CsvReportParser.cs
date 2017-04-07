@@ -11,11 +11,19 @@ namespace CainiaoCorrect.CsvParser
 	{
 		private List<Shipment> shipments;
 
+		/// <summary>
+		/// Initializes an instance of the CsvReportParser class.
+		/// </summary>
+		/// <param name="filename">File to parse (include *.csv)</param>
 		public CsvReportParser(string filename)
 		{
 			parse(filename);
 		}
 
+		/// <summary>
+		/// Helper method for parsing an order tracking report.
+		/// </summary>
+		/// <param name="filename">Filename (include "*.csv")</param>
 		private void parse(string filename)
 		{
 			CsvParserOptions csvParserOptions = new CsvParserOptions(true, new[] { ',' });
@@ -34,6 +42,10 @@ namespace CainiaoCorrect.CsvParser
 			}
 		}
 
+		/// <summary>
+		/// Retrieve all shipments in the parsed order tracking report.
+		/// </summary>
+		/// <returns>List of all shipments in report</returns>
 		public List<Shipment> getResults()
 		{
 			return shipments;

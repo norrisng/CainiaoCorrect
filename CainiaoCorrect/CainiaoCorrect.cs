@@ -70,11 +70,12 @@ namespace CainiaoCorrect
 				digestXml = digestXml.Substring(digestXml.IndexOf("%") + 1);
 
 				// AutoCorrect
-				// Quick and dirty fix: suppress this WriteLine if nothing was entered
-				if (shipment_id != "")
+				if (isFound)
+				{
 					Console.WriteLine("  Auto-correction in progress...");
-				ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
-				digestXml = autoCorrect.correct();
+					ErrorCorrection autoCorrect = new ErrorCorrection(digestXml);
+					digestXml = autoCorrect.correct();
+				}
 
 				// copy XML (if found) to clipboard
 				if (digestXml != "")

@@ -43,7 +43,7 @@ namespace CainiaoCorrect.ErrorCorrect
 		}
 
 		/// <summary>
-		/// Auto-corrects any common errors (if any).
+		/// Auto-corrects pre-defined common errors (if any).
 		/// </summary>
 		/// <returns>Corrected XML</returns>
 		public string correct()
