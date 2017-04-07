@@ -76,6 +76,7 @@
     <Compile Include="ErrorCorrect\ErrorCorrection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipment.cs" />
+    <Compile Include="SubmitVerify.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -97,6 +98,9 @@
   <ItemGroup>
     <Content Include="api\dataDigestEndpoint.txt" />
     <Content Include="api\dataDigestKey.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tracking\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
