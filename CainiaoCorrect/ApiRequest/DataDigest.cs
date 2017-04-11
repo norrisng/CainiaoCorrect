@@ -49,7 +49,13 @@ namespace CainiaoCorrect
 			return endpoint;
 		}
 
-		public void getDataDigest(string xmlString)
+		/// <summary>
+		/// Makes an API call to the dataDigest server and returns the encodedString,
+		/// which is required by the DHLeC AP API.
+		/// </summary>
+		/// <param name="xmlString">The XML string to sign and encode.</param>
+		/// <returns>encodedString if sucessful, null otherwise</returns>
+		public string getDataDigest(string xmlString)
 		{
 			/*
 			 * IMPORTANT:	the endpoint and API key must be provided via 2 separate text files
@@ -64,9 +70,15 @@ namespace CainiaoCorrect
 			WebRequest getDataDigest;
 			getDataDigest = WebRequest.Create(dataDigestUrl);
 
-			// workaround: the XML string will push the URI beyond the limits of a GET WebRequest
+			/* workaround: 
+			 *		the XML string will push the URI beyond the limits of a GET WebRequest,
+			 *		so we instead have to make a POST WebRequest with an empty body.
+			 *		the end result is the same, however.
+			 */
 			getDataDigest.Method = "POST";
-			
+
+			string encodedString = null;
+
 			try
 			{
 				Stream objStream;
@@ -76,8 +88,6 @@ namespace CainiaoCorrect
 
 				string sLine = "";
 				int lineNumber = 0;
-
-				string encodedString = "";
 
 				while (sLine != null)
 				{
@@ -99,6 +109,7 @@ namespace CainiaoCorrect
 				Console.WriteLine(e.StackTrace + "\n\n\n" + e.Message);
 			}
 
+			return encodedString;
 		}
 	}
 }
