@@ -15,12 +15,12 @@ This program was designed to retrieve Cainiao shipment requests, but most likely
 No installation is requred. Simply download the latest release under "releases" at the top of the GitHub project page, then extract the *.zip to any location.
 
 The following text files are required for getDataDigest endpoint functionality. This hasn't been implemented yet, however:
- * `api/dataDigestEndpoint.txt`
- * `api/dataDigestKey.txt`
+ * `api/dataDigestEndpoint.txt` - this file should contain the DataDigest API endpoint URI
+ * `api/dataDigestKey.txt` - this file should contain the `secretKey` as required by the DataDigest server
 
 ## How to use ##
 
-1. Download all Order/Tracking reports, and place it in the same directory as CainiaoCorrect. Files MUST be named `"cainiao_Orderpush.csv`", or `"cainiao_Orderpush?.csv`" (where `?` equals any SINGLE character). If a combined file already exists (this combined file is named `cainiao_Orderpush_combined.csv`), it will be overwritten.
+1. Download all Order/Tracking reports, and place it in the same directory as CainiaoCorrect. Files MUST be named `cainiao_Orderpush.csv`, or `cainiao_Orderpush?.csv` (where `?` equals any SINGLE character). If a combined file already exists (this combined file is named `cainiao_Orderpush_combined.csv`), it will be overwritten.
 
 2. Open CainiaoCorrect.
 
@@ -35,4 +35,4 @@ The following text files are required for getDataDigest endpoint functionality. 
 
 ## Third-party libraries ##
 
-CainiaoCorrect uses the [TinyCsvParser](https://github.com/bytefish/TinyCsvParser) Library by [Philipp Wagner](http://www.bytefish.de).
+CainiaoCorrect uses the [TinyCsvParser](https://github.com/bytefish/TinyCsvParser) library by [Philipp Wagner](http://www.bytefish.de).

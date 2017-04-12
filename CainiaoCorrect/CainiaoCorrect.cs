@@ -58,7 +58,8 @@ namespace CainiaoCorrect
 						digestXml += shipments[i].requestFileContent;
 
 						// Keep track of corrected shipments
-						correctedShipments.Add(shipment_id);
+						if (!correctedShipments.Contains(shipment_id))
+							correctedShipments.Add(shipment_id);
 					}
 
 				}
