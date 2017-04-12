@@ -1,5 +1,13 @@
 # Changelog #
 
+## 1.3.1 ##
+
+Released **2017-04-12**
+
+* **Feature:** Auto-correction now replaces "~" with a space
+* **Bugfix:** Identical shipment IDs are no longer verified multiple times
+
+
 ## 1.3.0 ##
 
 Released **2017-04-07**
