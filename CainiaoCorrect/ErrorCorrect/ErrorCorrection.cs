@@ -98,6 +98,14 @@ namespace CainiaoCorrect.ErrorCorrect
 
 		}
 
+		/// <summary>
+		/// Removes forbidden characters from the XML string.
+		/// </summary>
+		private void correctIllegalChars()
+		{
+			xmlString = xmlString.Replace('~', ' ');
+		}
+
 		private void parseRules()
 		{
 
