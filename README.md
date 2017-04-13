@@ -5,9 +5,14 @@ CainiaoCorrect is a simple program that can retrieve the RequestFileContent for 
 It also checks if all shipment IDs that were successfully retrieved were submitted to DHLeC. This can be useful as a "final check". 
 
 As of this current version, basic error correction includes the following:
- * Correcting `<declarePrice>` and corresponding `<quantity>` so that it is at least `100` cents per `1` good
- * Correcting `<name>` and `<categoryName>` from `IC` to `Integrated Circuit`
- * Replacing all instances of `~` with a space
+
+Location 							| Original 					| Replacement
+------------------------------------|---------------------------|---------------
+`<declarePrice>` and `<quantity>` 	| Less than or equal to 99 	| 100
+`<name>` and `<categoryName>` 		| IC 						| Integrated Circuit
+`<name>` and `<categoryName>` 		| `#` 						| (remove)
+`<phone>`							| `+` 						| (remove)
+Everywhere 							| `~` 						| (space)
 
 This program was designed to retrieve Cainiao shipment requests, but most likely works for shipments submitted by any customer.
 
