@@ -118,8 +118,32 @@ namespace CainiaoCorrect.ErrorCorrect
 			XmlDocument request = new XmlDocument();
 			request.LoadXml(xmlString);
 
-			XmlNode node = request.SelectSingleNode("//request/receiver/phone");
+			// TODO: refactor into helper method
+
+			XmlNode node = request.SelectSingleNode("//request/sender/phone");
 			string originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			node = request.SelectSingleNode("//request/receiver/phone");
+			originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			node = request.SelectSingleNode("//request/returnParcel/phone");
+			originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			// <mobile>
+
+			node = request.SelectSingleNode("//request/sender/mobile");
+			originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			node = request.SelectSingleNode("//request/receiver/mobile");
+			originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			node = request.SelectSingleNode("//request/returnParcel/mobile");
+			originalContent = node.InnerText;
 			node.InnerText = originalContent.Replace("+", "");
 
 			// Convert XmlDocument back to string

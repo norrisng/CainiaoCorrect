@@ -11,7 +11,7 @@ Location 							| Original 					| Replacement
 `<declarePrice>` and `<quantity>` 	| Less than or equal to 99 	| 100
 `<name>` and `<categoryName>` 		| IC 						| Integrated Circuit
 `<name>` and `<categoryName>` 		| `#` 						| (remove)
-`<phone>`							| `+` 						| (remove)
+`<phone>`, `<mobile>`				| `+` 						| (remove)
 Everywhere 							| `~` 						| (space)
 
 This program was designed to retrieve Cainiao shipment requests, but most likely works for shipments submitted by any customer.
