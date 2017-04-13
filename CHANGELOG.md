@@ -1,5 +1,11 @@
 # Changelog #
 
+## 1.3.2 ##
+
+Released **2017-04-13**
+
+* **Bugfix:** "~" auto-correction wasn't working at all
+
 ## 1.3.1 ##
 
 Released **2017-04-12**

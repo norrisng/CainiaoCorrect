@@ -50,6 +50,7 @@ namespace CainiaoCorrect.ErrorCorrect
 		{
 			correctUnitPrice();
 			correctGoodsName();
+			correctIllegalChars();
 
 			List<CorrectionRuleset> correctionRules = new List<CorrectionRuleset>();
 
@@ -103,7 +104,7 @@ namespace CainiaoCorrect.ErrorCorrect
 		/// </summary>
 		private void correctIllegalChars()
 		{
-			xmlString = xmlString.Replace('~', ' ');
+			xmlString = xmlString.Replace("~", " ");
 		}
 
 		private void parseRules()
