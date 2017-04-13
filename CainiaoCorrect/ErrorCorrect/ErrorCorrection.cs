@@ -55,7 +55,7 @@ namespace CainiaoCorrect.ErrorCorrect
 			correctPhone();
 			correctName();
 
-			List<CorrectionRuleset> correctionRules = new List<CorrectionRuleset>();
+			//List<CorrectionRuleset> correctionRules = new List<CorrectionRuleset>();
 
 			return xmlString;
 		}
@@ -115,39 +115,26 @@ namespace CainiaoCorrect.ErrorCorrect
 		/// </summary>
 		private void correctPhone()
 		{
-			XmlDocument request = new XmlDocument();
-			request.LoadXml(xmlString);
+			//XmlDocument request = new XmlDocument();
+			//request.LoadXml(xmlString);
 
 			// TODO: refactor into helper method
 
-			XmlNode node = request.SelectSingleNode("//request/sender/phone");
-			string originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
+			XmlEditor senderPhone = new XmlEditor();
+			xmlString = senderPhone.replaceXml(xmlString, "//request/sender/phone", "+", "");
 
-			node = request.SelectSingleNode("//request/receiver/phone");
-			originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
+			// no landline for reciver, only mobile
+			//XmlEditor receiverPhone = new XmlEditor();
+			//receiverPhone.replaceXml(xmlString, "//request/receiver/phone", "+", "");
 
-			node = request.SelectSingleNode("//request/returnParcel/phone");
-			originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
+			XmlEditor returnParcelPhone = new XmlEditor();
+			xmlString = returnParcelPhone.replaceXml(xmlString, "//request/returnParcel/phone", "+", "");
 
 			// <mobile>
 
-			node = request.SelectSingleNode("//request/sender/mobile");
-			originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
+			XmlEditor receiverMobile = new XmlEditor();
+			xmlString = receiverMobile.replaceXml(xmlString, "//request/receiver/mobile", "+", "");
 
-			node = request.SelectSingleNode("//request/receiver/mobile");
-			originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
-
-			node = request.SelectSingleNode("//request/returnParcel/mobile");
-			originalContent = node.InnerText;
-			node.InnerText = originalContent.Replace("+", "");
-
-			// Convert XmlDocument back to string
-			xmlString = request.OuterXml;
 		}
 
 		/// <summary>

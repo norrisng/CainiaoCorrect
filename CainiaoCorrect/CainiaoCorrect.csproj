@@ -75,6 +75,7 @@
     <Compile Include="ErrorCorrect\CorrectionRulesetMapping.cs" />
     <Compile Include="ErrorCorrect\CorrectionRulesetParser.cs" />
     <Compile Include="ErrorCorrect\ErrorCorrection.cs" />
+    <Compile Include="ErrorCorrect\XmlEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipment.cs" />
     <Compile Include="SubmitVerify.cs" />

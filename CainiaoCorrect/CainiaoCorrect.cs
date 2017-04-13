@@ -112,6 +112,9 @@ namespace CainiaoCorrect
 			Console.WriteLine("\nVerifying previously entered shipment IDs.\n" +
 								"This may take a while...");
 
+			// Force a 5-second wait to allow shipment to propogate through DHL backend
+			System.Threading.Thread.Sleep(5000);
+
 			bool allShipmentsSuccessful = true;
 
 			foreach(string id in correctedShipments)
