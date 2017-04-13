@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace CainiaoCorrect.ErrorCorrect
 {
@@ -51,6 +52,8 @@ namespace CainiaoCorrect.ErrorCorrect
 			correctUnitPrice();
 			correctGoodsName();
 			correctIllegalChars();
+			correctPhone();
+			correctName();
 
 			List<CorrectionRuleset> correctionRules = new List<CorrectionRuleset>();
 
@@ -105,6 +108,42 @@ namespace CainiaoCorrect.ErrorCorrect
 		private void correctIllegalChars()
 		{
 			xmlString = xmlString.Replace("~", " ");
+		}
+
+		/// <summary>
+		/// Removes the "+" symbol from phone numbers
+		/// </summary>
+		private void correctPhone()
+		{
+			XmlDocument request = new XmlDocument();
+			request.LoadXml(xmlString);
+
+			XmlNode node = request.SelectSingleNode("//request/receiver/phone");
+			string originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("+", "");
+
+			// Convert XmlDocument back to string
+			xmlString = request.OuterXml;
+		}
+
+		/// <summary>
+		/// Removes the "#" from goods names
+		/// </summary>
+		private void correctName()
+		{
+			XmlDocument request = new XmlDocument();
+			request.LoadXml(xmlString);
+
+			XmlNode node = request.SelectSingleNode("//request/parcel/goodsList/goods/name");
+			string originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("#", "");
+
+			node = request.SelectSingleNode("//request/parcel/goodsList/goods/categoryName");
+			originalContent = node.InnerText;
+			node.InnerText = originalContent.Replace("#", "");
+
+			// Convert XmlDocument back to string
+			xmlString = request.OuterXml;
 		}
 
 		private void parseRules()
