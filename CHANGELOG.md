@@ -1,5 +1,13 @@
 # Changelog #
 
+## 1.4.0 ##
+
+Released **2017-04-13**
+
+* **Feature:** Auto-correction now removes "+" in all <phone> and <mobile> fields
+* **Feature:** Auto-correction now removes "#" in <name> and corresponding <categoryName>
+* **Bugfix:** Allow more time for newly-submitted shipments to propogate through DHL backend
+
 ## 1.3.2 ##
 
 Released **2017-04-13**
